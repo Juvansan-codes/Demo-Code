@@ -30,61 +30,6 @@
 
     <div class="status" id="status">Status: Idle</div>
   </div>
-
-<script>
-  // ==============================
-  // 🎙️ SPEECH RECOGNITION
-  // ==============================
-
-  const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  const recognition = new SpeechRecognition();
-  recognition.lang = "en-US";
-  recognition.interimResults = false;
-
-  function startListening() {
-    document.getElementById("status").innerText = "🎤 Listening...";
-    recognition.start();
-  }
-
-  recognition.onresult = (event) => {
-    const transcript = event.results[0][0].transcript;
-    document.getElementById("answerBox").value = transcript;
-    document.getElementById("status").innerText = "✅ Speech captured";
-  };
-
-  recognition.onerror = () => {
-    document.getElementById("status").innerText = "❌ Mic error";
-  };
-
-  // ==============================
-  // 🔊 SPEECH SYNTHESIS
-  // ==============================
-
-  function speakQuestion() {
-    const text = document.getElementById("questionBox").innerText;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1;
-    speechSynthesis.speak(utterance);
-  }
-
-  // ==============================
-  // 🧠 SUBMIT (placeholder)
-  // ==============================
-
-  function submitAnswer() {
-    const answer = document.getElementById("answerBox").value;
-
-    if (!answer) {
-      alert("Please answer first!");
-      return;
-    }
-
-    document.getElementById("status").innerText =
-      "🚀 Ready to send to AI (connect backend next)";
-  }
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
